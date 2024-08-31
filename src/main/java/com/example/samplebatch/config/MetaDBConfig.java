@@ -12,14 +12,14 @@ import javax.sql.DataSource;
 
 @Configuration
 public class MetaDBConfig {
-//    @Primary
+    @Primary
     @Bean
-    @ConfigurationProperties
+    @ConfigurationProperties("spring.datasource")
     public DataSource metaDBSource() {
         return DataSourceBuilder.create().build();
     }
 
-//    @Primary
+    @Primary
     @Bean
     public PlatformTransactionManager metaTransactionManager() {
 
