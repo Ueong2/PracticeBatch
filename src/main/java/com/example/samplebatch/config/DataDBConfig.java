@@ -39,7 +39,11 @@ public class DataDBConfig {
 
         HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto", "update");
-        properties.put("hibernate.show_sql", "true");
+        properties.put("hibernate.show_sql", "true");               // SQL 쿼리 출력
+//        properties.put("hibernate.format_sql", "true");             // SQL을 읽기 쉽게 포맷팅
+//        properties.put("hibernate.use_sql_comments", "true");       // SQL에 주석 추가
+//        properties.put("hibernate.type", "TRACE");                  // SQL 파라미터 값도 출력
+
         em.setJpaPropertyMap(properties);
 
         return em;
