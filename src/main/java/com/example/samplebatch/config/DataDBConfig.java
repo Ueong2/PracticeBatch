@@ -23,14 +23,12 @@ import java.util.HashMap;
 public class DataDBConfig {
 
     @Bean
-    @Qualifier
-    @ConfigurationProperties("spring.second-datasource")
+    @ConfigurationProperties("spring.datasource-data")
     public DataSource dataDBSource() {
         return DataSourceBuilder.create().build();
     }
 
     @Bean
-    @Qualifier
     public LocalContainerEntityManagerFactoryBean dataEntityManager() {
 
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -48,7 +46,6 @@ public class DataDBConfig {
     }
 
     @Bean
-    @Qualifier
     public PlatformTransactionManager dataTransactionManager() {
 
         JpaTransactionManager transactionManager = new JpaTransactionManager();
