@@ -1,17 +1,34 @@
 # DB, thymeleaf 설정
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    jdbc-url: jdbc:mysql://localhost:3306/batch?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
-    username: root
-    password: ekseh123
-
-  second-datasource:
+  datasource-meta:
     driver-class-name: com.mysql.cj.jdbc.Driver
     jdbc-url: jdbc:mysql://localhost:3306/meta?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
     username: root
     password: ekseh123
 
+  datasource-data:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://localhost:3306/batch?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    username: root
+    password: ekseh123
+
   batch:
+    jdbc:
+      initialize-schema: always   # jap의 ddl: auto와 비슷
+      schema: classpath:org/springframework/batch/core/schema-mysql.sql
     job:
       enabled: false
+
+
+########### application.properties 작성 시 아래와 같이
+#
+#spring.application.name=SampleBatch
+#spring.batch.job.enabled=false
+#spring.datasource-meta.driver-class-name=com.mysql.cj.jdbc.Driver
+#spring.datasource-meta.jdbc-url=jdbc:mysql://localhost:3306/meta?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+#spring.datasource-meta.username=root
+#spring.datasource-meta.password=ekseh123
+#spring.datasource-data.driver-class-name=com.mysql.cj.jdbc.Driver
+#spring.datasource-data.jdbc-url=jdbc:mysql://localhost:3306/meta?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+#spring.datasource-data.username=root
+#spring.datasource-data.password=ekseh123
