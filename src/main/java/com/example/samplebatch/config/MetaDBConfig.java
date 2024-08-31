@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 public class MetaDBConfig {
     @Primary
     @Bean
-    @ConfigurationProperties("spring.datasource")
+    @ConfigurationProperties("spring.first-datasource")
     public DataSource metaDBSource() {
         return DataSourceBuilder.create().build();
     }

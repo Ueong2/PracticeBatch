@@ -1,6 +1,6 @@
 # DB, thymeleaf 설정
 spring:
-  datasource:
+  first-datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     jdbc-url: jdbc:mysql://localhost:3306/batch?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
     username: root
