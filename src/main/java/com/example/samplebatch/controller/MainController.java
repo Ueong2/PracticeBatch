@@ -27,7 +27,7 @@ public class MainController {
 
         jobLauncher.run(jobRegistry.getJob("firstJob"), jobParameters);
 
-        return "First Job Launched";
+        return "First Job : DB to DB & Scheduling";
     }
     @GetMapping("/second")
     public String secondApi(@RequestParam("value") String value) throws Exception {
@@ -37,7 +37,7 @@ public class MainController {
 
         jobLauncher.run(jobRegistry.getJob("secondJob"), jobParameters);
 
-        return "Second Job Launched";
+        return "Second Job : Win Greater than Equal 10";
     }
     @GetMapping("/third")
     public String thirdApi(@RequestParam("value") String value) throws Exception {
@@ -47,6 +47,16 @@ public class MainController {
 
         jobLauncher.run(jobRegistry.getJob("thirdJob"), jobParameters);
 
-        return "Third Job Launched";
+        return "Third Job : Excel to DB";
+    }
+    @GetMapping("/fourth")
+    public String fourthApi(@RequestParam("value") String value) throws Exception {
+        JobParameters jobParameters = new JobParametersBuilder()
+                .addString("date", value)
+                .toJobParameters();
+
+        jobLauncher.run(jobRegistry.getJob("fourthJob"), jobParameters);
+
+        return "Fourth Job DB to Excel";
     }
 }

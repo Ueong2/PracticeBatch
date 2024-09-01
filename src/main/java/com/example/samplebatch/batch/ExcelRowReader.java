@@ -25,7 +25,7 @@ public class ExcelRowReader implements ItemStreamReader<Row> {
 
     @Override
     public void open(ExecutionContext executionContext) throws ItemStreamException {
-        // 단 한 번만 실행되는 메서드로 엑셀 파일 오픈 등의 로직 기입
+        // 코드 동작 시 단 한 번만 실행되는 메서드로 엑셀 파일 오픈 등의 로직 기입
         try {
             fileInputStream = new FileInputStream(filePath);
             workbook = WorkbookFactory.create(fileInputStream);
