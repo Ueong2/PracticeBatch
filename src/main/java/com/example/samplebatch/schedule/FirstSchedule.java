@@ -23,7 +23,8 @@ public class FirstSchedule {
     @Scheduled(cron = "10 * * * * *", zone = "Asia/Seoul")
     public void runFirstJob() throws Exception {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");  // 해당 작업 실행 시간을 추출
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");   // 해당 작업 실행 시간을 추출
+                                                                                            // hh : 12시간, HH : 24시간
         String date = dateFormat.format(new Date());
 
         JobParameters jobParameters = new JobParametersBuilder()
