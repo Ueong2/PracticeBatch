@@ -31,8 +31,6 @@ public class FourthBatch {
     @Bean
     public Job fourthJob() {
 
-        System.out.println("fourth job");
-
         return new JobBuilder("fourthJob", jobRepository)
                 .start(fourthStep())
                 .build();
@@ -40,8 +38,6 @@ public class FourthBatch {
 
     @Bean
     public Step fourthStep() {
-
-        System.out.println("fourth step");
 
         return new StepBuilder("fourthStep", jobRepository)
                 .<BeforeEntity, BeforeEntity> chunk(10, platformTransactionManager)

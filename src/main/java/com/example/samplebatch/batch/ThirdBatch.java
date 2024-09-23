@@ -28,8 +28,6 @@ public class ThirdBatch {
     @Bean
     public Job thirdJob() {
 
-        System.out.println("third job");
-
         return new JobBuilder("thirdJob", jobRepository)
                 .start(thirdStep())
                 .build();
