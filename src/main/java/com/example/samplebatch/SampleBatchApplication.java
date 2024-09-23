@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@EnableScheduling    // 스케쥴 활용을 위한 어노테이션
+//@EnableScheduling    // 스케쥴 활용을 위한 어노테이션
 public class SampleBatchApplication {
 	
 	public static void main(String[] args) {
