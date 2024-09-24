@@ -3,8 +3,7 @@ package com.example.samplebatch.batch;
 import com.example.samplebatch.entity.BeforeEntity;
 import com.example.samplebatch.repository.BeforeRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.Step;
+import org.springframework.batch.core.*;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
@@ -47,6 +46,7 @@ public class FifthBatch {
                 .reader(fifthBeforeReader())
                 .processor(fifthProcessor())
                 .writer(txtFileWriter())
+                .listener(stepExecutionListener())
                 .build();
     }
 
@@ -100,5 +100,24 @@ public class FifthBatch {
         writer.setLineAggregator(lineAggregator);
 
         return writer;
+    }
+
+    @Bean
+    public StepExecutionListener stepExecutionListener() {
+        return new StepExecutionListener() {
+            @Override
+            public void beforeStep(StepExecution stepExecution){
+                TestForListener test = new TestForListener();
+                System.out.println(test.beforeOne());
+                StepExecutionListener.super.beforeStep(stepExecution);
+            }
+            @Override
+            public ExitStatus afterStep(StepExecution stepExecution) {
+                TestForListener test = new TestForListener();
+                System.out.println(test.afterOne());
+
+                return StepExecutionListener.super.afterStep(stepExecution);
+            }
+        };
     }
 }
